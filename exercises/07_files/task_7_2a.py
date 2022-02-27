@@ -17,3 +17,12 @@
 """
 
 ignore = ["duplex", "alias", "configuration"]
+
+file_name = "config_sw1.txt"
+
+with open(file_name) as f:
+    for line in f:
+        word_from_file = line.split()
+        word_from_file_ingnore = set(word_from_file) & set(ignore)
+        if not line.startswith("!") and not word_from_file_ingnore:
+            print(line.rstrip())

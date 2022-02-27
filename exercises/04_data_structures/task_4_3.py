@@ -21,4 +21,12 @@
 проверять результат.
 """
 
+from sys import stdout
+from unittest import result
+
+
 config = "switchport trunk allowed vlan 1,3,10,20,30,100"
+result = config[config.rfind(" ") +1 :].split(',')
+stdout = result
+print(stdout)
+

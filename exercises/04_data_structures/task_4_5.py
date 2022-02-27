@@ -20,5 +20,11 @@
 проверять результат.
 """
 
+from unittest import result
+
+
 command1 = "switchport trunk allowed vlan 1,2,3,5,8"
 command2 = "switchport trunk allowed vlan 1,3,8,9"
+result = sorted(set(command1[command1.rfind(" ") +1 ::].split(",")) & set(command2[command2.rfind(" ") +1 ::].split(",")))
+stdout = result
+print(stdout)

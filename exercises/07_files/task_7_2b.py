@@ -17,3 +17,16 @@
 """
 
 ignore = ["duplex", "alias", "configuration"]
+
+ignore = ["duplex", "alias", "configuration"]
+
+file_name = "config_sw1.txt"
+
+
+new_file_name = "new_config_sw1.txt"
+with open(file_name) as f, open(new_file_name, "w") as f_new:
+    for line in f:
+        word_from_file = line.split()
+        word_from_file_ingnore = set(word_from_file) & set(ignore)
+        if not line.startswith("!") and not word_from_file_ingnore:
+            f_new.write(line)

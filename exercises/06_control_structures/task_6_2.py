@@ -12,3 +12,19 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+
+from ipaddress import ip_address
+
+
+ip_address = input("Введите IP-адрес в формате 10.0.1.1: ")
+oct1 = int(ip_address.split(".")[0])
+if oct1 >= 1 and oct1 <=223:
+   print("unicast")
+elif oct1 >= 224 and oct1 <= 239:
+   print("multicast")
+elif ip_address == "255.255.255.255":
+   print("local broadcast")
+elif ip_address == "0.0.0.0":
+   print("unassigned")
+else:
+   print("unused")

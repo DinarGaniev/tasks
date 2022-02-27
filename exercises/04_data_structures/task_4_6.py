@@ -17,4 +17,22 @@ Outbound Interface    FastEthernet0/0
 проверять результат.
 """
 
+from re import template
+
+
 ospf_route = "      10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
+ospf_route_list = ospf_route.split()
+print(ospf_route_list)
+result = {'Prefix': ospf_route_list[0],
+          'AD_Metric': ospf_route_list[1].strip("[]"),
+          'Next_Hop': ospf_route_list[3].strip(','),
+          'Last_update': ospf_route_list[4].strip(','),
+          'Outbound_Interface': ospf_route_list[5]}
+template = '''
+Prefix               {Prefix:15}
+AD/Metri             {AD_Metric} 
+Next-Hop             {Next_Hop} 
+Last update          {Last_update}
+Outbound Interface   {Outbound_Interface} 
+'''
+print(template.format(**result))

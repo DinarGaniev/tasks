@@ -39,3 +39,11 @@ interface Ethernet0/3
 ...
 
 """
+
+
+file_name = "config_sw1.txt"
+
+with open(file_name) as f:
+    for line in f:
+        if not line.startswith("!"):
+            print(line.rstrip())
